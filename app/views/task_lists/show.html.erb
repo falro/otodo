@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<h1>View element of "Task List"</h1>
+
+<tbody>
+     <p><%= @task_list.name %></p><br>
+     <p><%= @task_list.description %></p>
+</tbody>
+ 
+
+<%= link_to 'Edit', edit_task_list_path(@task_list) %> |
+<%= link_to 'Back', task_lists_path %>
