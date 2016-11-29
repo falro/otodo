@@ -32,7 +32,11 @@ Rails.application.routes.draw do
   #     resource :seller
   #   end
   
-  resources :task_lists 
+  resources :task_lists do 
+    resources :tasks, except: [:index, :show]
+  end
+  
+  
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
