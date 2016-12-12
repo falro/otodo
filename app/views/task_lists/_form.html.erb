@@ -1,5 +1,5 @@
 <%= form_for([@task_list]) do |f| %>
-  <% if @tasklist.errors.any? %>
+  <% if @task_list.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task_list.errors.count, "error") %> prohibited this task_list from being saved:</h2>
      <ul>

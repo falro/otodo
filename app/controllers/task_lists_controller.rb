@@ -19,6 +19,7 @@ class TaskListsController < ApplicationController
 
   # GET /task_lists/1/edit
   def edit
+    @task_list = TaskList.find params[:id]
   end
 
   # POST /task_lists

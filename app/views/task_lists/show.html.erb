@@ -2,10 +2,49 @@
 <h1>View element of "Task List"</h1>
 
 <tbody>
+     <h1 class="display-1">Task List</h1>
      <p><%= @task_list.name %></p><br>
      <p><%= @task_list.description %></p>
+     
+     <h2 class="display-4">Tasks</h2>
+     <% if @task_list.tasks.size > 0 %>
+          <table class="table">
+               <thead class="thead-default">
+                    <tr class="active">
+                         <th>name</th>
+                         <th>Finished</th>
+                         <th>Edit</th>
+                         <th>Delete</th>
+                   </tr>
+               </thead>
+               <tbody>
+                    <% @task_list.tasks.each do |task| %>
+                         <tr>
+                              <td><%= task.name %></td>
+                              <% if task.finished %>
+                                   <td><span class="glyphicon glyphicon-ok" style="color:green" aria-hidden="true"></span></td>
+                              <% else %>
+                                   <td> </td>
+                              <% end %>
+                              <td><%= link_to 'Edit', edit_task_list_task_path(@task_list, task) %></td>
+                              <td><%= link_to 'Destroy', task_list_task_path(@task_list, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                         </tr>
+                    <% end %>
+               </tbody>
+          </table>
+     <% end %>
+     <br><br>
 </tbody>
- 
+<div style="text-align: center; margin:auto">
+     <button type="button" class="btn btn-primary" style="margin:5%; width= 40%;  padding: 15px 32px;">
+          <%= link_to 'New Task', new_task_list_task_path(@task_list), {:style=>'color:#FFFFFF; font-size: 250%;', :class => "css_class"} %>
+     </button>
+     <button type="button" class="btn btn-success" style="margin:5%;  padding: 15px 32px;">
+          <%= link_to 'Edit', edit_task_list_path(@task_list), {:style=>'color:#FFFFFF; font-size: 250%;', :class => "css_class"} %>
+     </button>
+     <button type="button" class="btn btn-danger" style="margin:5%;  padding: 15px 32px;">
+          <%= link_to 'Back', task_lists_path, {:style=>'color:#FFFFFF; font-size: 250%;', :class => "css_class"} %>
+     </button>
+</div>
 
-<%= link_to 'Edit', edit_task_list_path(@task_list) %> |
-<%= link_to 'Back', task_lists_path %>
+
